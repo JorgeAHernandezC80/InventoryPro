@@ -1,0 +1,55 @@
+/* main.css */
+.container {
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #ddd;
+    margin-right: 5px;
+    border-radius: 6px;
+}
+
+.tab-btn.active {
+    background-color: #4caf50;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Botones */
+button {
+    cursor: pointer;
+}
+
+.btn-vender {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+}
+
+.btn-vender:hover {
+    background-color: #e68900;
+}

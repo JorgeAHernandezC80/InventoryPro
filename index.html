@@ -3,284 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Inventario</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Librerías para exportar -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <title>InventoryPro</title>
+
+    <!-- CSS modular -->
+    <link rel="stylesheet" href="../CSS/login.css">
+    <link rel="stylesheet" href="../CSS/carousel.css">
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../CSS/modals.css">
+
+    <!-- Librerías externas con defer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js" defer></script>
 </head>
 <body>
-    <!-- Pantalla de Login -->
-    <div id="loginScreen" class="login-screen">
 
-        <!-- Carrusel izquierdo -->
-        <div class="login-carousel">
-            <div class="carousel-track">
-                <div class="carousel-slide active">
-                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80" alt="Frutas y verduras frescas">
-                    <div class="carousel-caption">
-                        <span class="carousel-icon">🥦</span>
-                        <h2>Frutas & Verduras</h2>
-                        <p>Controla tu inventario de productos frescos</p>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=800&q=80" alt="Granos y cereales">
-                    <div class="carousel-caption">
-                        <span class="carousel-icon">🌾</span>
-                        <h2>Granos & Cereales</h2>
-                        <p>Arroz, frijoles, lentejas y más</p>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?w=800&q=80" alt="Lácteos">
-                    <div class="carousel-caption">
-                        <span class="carousel-icon">🥛</span>
-                        <h2>Lácteos</h2>
-                        <p>Leche, quesos, yogures y derivados</p>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://images.unsplash.com/photo-1607349913338-fca6f7fc42d0?w=800&q=80" alt="Carnes y proteínas">
-                    <div class="carousel-caption">
-                        <span class="carousel-icon">🥩</span>
-                        <h2>Carnes & Proteínas</h2>
-                        <p>Gestiona tu stock de proteínas fácilmente</p>
-                    </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80" alt="Aceites y enlatados">
-                    <div class="carousel-caption">
-                        <span class="carousel-icon">🛒</span>
-                        <h2>Canasta Familiar</h2>
-                        <p>Todo tu mercado en un solo sistema</p>
-                    </div>
+<!-- Pantalla de Login -->
+<div id="loginScreen" class="login-screen">
+
+    <!-- Espacio izquierdo 5% -->
+    <div class="spacer-left"></div>
+
+    <!-- Carrusel 60% -->
+    <div class="login-carousel">
+        <div class="carousel-track">
+            <!-- Slides -->
+            <div class="carousel-slide active">
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80" alt="Frutas y verduras frescas">
+                <div class="carousel-caption">
+                    <span class="carousel-icon">🥦</span>
+                    <h2>Frutas & Verduras</h2>
+                    <p>Controla tu inventario de productos frescos</p>
                 </div>
             </div>
-
-            <!-- Indicadores -->
-            <div class="carousel-dots">
-                <span class="dot active" onclick="irASlide(0)"></span>
-                <span class="dot" onclick="irASlide(1)"></span>
-                <span class="dot" onclick="irASlide(2)"></span>
-                <span class="dot" onclick="irASlide(3)"></span>
-                <span class="dot" onclick="irASlide(4)"></span>
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=800&q=80" alt="Granos y cereales">
+                <div class="carousel-caption">
+                    <span class="carousel-icon">🌾</span>
+                    <h2>Granos & Cereales</h2>
+                    <p>Arroz, frijoles, lentejas y más</p>
+                </div>
             </div>
-
-            <!-- Flechas -->
-            <button class="carousel-arrow left" onclick="moverCarrusel(-1)">&#8249;</button>
-            <button class="carousel-arrow right" onclick="moverCarrusel(1)">&#8250;</button>
-
-            <!-- Overlay con branding -->
-            <div class="carousel-brand">
-                <span>🛍️ Sistema de Inventario</span>
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?w=800&q=80" alt="Lácteos">
+                <div class="carousel-caption">
+                    <span class="carousel-icon">🥛</span>
+                    <h2>Lácteos</h2>
+                    <p>Leche, quesos, yogures y derivados</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1607349913338-fca6f7fc42d0?w=800&q=80" alt="Carnes y proteínas">
+                <div class="carousel-caption">
+                    <span class="carousel-icon">🥩</span>
+                    <h2>Carnes & Proteínas</h2>
+                    <p>Gestiona tu stock de proteínas fácilmente</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80" alt="Aceites y enlatados">
+                <div class="carousel-caption">
+                    <span class="carousel-icon">🛒</span>
+                    <h2>Canasta Familiar</h2>
+                    <p>Todo tu mercado en un solo sistema</p>
+                </div>
             </div>
         </div>
 
-        <!-- Formulario derecho -->
-        <div class="login-container">
-            <h1>Bienvenido</h1>
-            <p class="login-subtitle">Ingresa tus credenciales para continuar</p>
-            <form id="formLogin">
-                <input type="text" id="usuario" placeholder="Usuario" required>
-                <input type="password" id="password" placeholder="Contraseña" required>
-                <button type="submit">Iniciar Sesión</button>
-            </form>
-            <p class="login-hint">Usuario por defecto: admin | Contraseña: admin</p>
+       <!-- Indicadores del carrusel -->
+        <div class="carousel-dots">
+            <span class="dot active" onclick="irASlide(0)"></span>
+            <span class="dot" onclick="irASlide(1)"></span>
+            <span class="dot" onclick="irASlide(2)"></span>
+            <span class="dot" onclick="irASlide(3)"></span>
+            <span class="dot" onclick="irASlide(4)"></span>
+        </div>
+
+        <!-- Flechas del carrusel -->
+        <button class="carousel-arrow left" onclick="moverCarrusel(-1)">
+            <span class="arrow-icon">&#8249;</span>
+        </button>
+        <button class="carousel-arrow right" onclick="moverCarrusel(1)">
+            <span class="arrow-icon">&#8250;</span>
+        </button>
+
+        <!-- Branding del carrusel -->
+        <div class="carousel-brand">
+            <span>🛍️ InventoryPro</span>
         </div>
     </div>
 
-    <!-- Sistema Principal -->
-    <div class="container" id="mainSystem" style="display: none;">
-        <header>
-            <h1>Sistema de Inventario</h1>
-            <div class="user-info">
-                <span id="nombreUsuario" class="user-name"></span>
-                <span id="rolUsuario" class="user-role"></span>
-                <button id="btnCerrarSesion" class="btn-logout">Cerrar Sesión</button>
-            </div>
-        </header>
+    <!-- Formulario login 30% -->
+    <div class="login-container">
+        <h1 id="login-title">¡Bienvenido de nuevo!</h1> <!-- saludo cordial -->
+        <p class="login-subtitle">Ingresa tus credenciales para continuar</p>
 
-        <nav class="tabs">
-            <button class="tab-btn active" data-tab="ingresar">Ingresar Productos</button>
-            <button class="tab-btn" data-tab="visualizar">Visualizar Productos</button>
-            <button class="tab-btn" data-tab="seleccionar">Seleccionar Productos</button>
-            <button class="tab-btn" id="tabUsuarios" data-tab="usuarios" style="display: none;">Gestión de Usuarios</button>
-        </nav>
+        <form id="formLogin">
+            <input type="text" id="usuario" class="input-field" placeholder="Usuario" required>
+            <input type="password" id="password" class="input-field" placeholder="Contraseña" required>
 
-        <!-- Módulo 1: Ingresar Productos -->
-        <section id="ingresar" class="tab-content active">
-            <h2>Ingresar Productos</h2>
-            
-            <div class="input-mode">
-                <button id="modoIndividual" class="mode-btn active">Individual</button>
-                <button id="modoMasivo" class="mode-btn">Masivo</button>
+            <!-- Opciones login -->
+            <div class="login-options">
+               <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
             </div>
 
-            <!-- Ingreso Individual -->
-            <div id="formularioIndividual" class="form-container">
-                <form id="formProducto">
-                    <input type="text" id="nombre" placeholder="Nombre del producto" required>
-                    <input type="number" id="cantidad" placeholder="Cantidad" required min="1">
-                    <input type="number" id="precio" placeholder="Precio" required min="0" step="0.01">
-                    <input type="text" id="categoria" placeholder="Categoría">
-                    <button type="submit">Agregar Producto</button>
-                </form>
-            </div>
+            <button type="submit" class="btn-submit">Iniciar Sesión</button>
+        </form>
 
-            <!-- Ingreso Masivo -->
-            <div id="formularioMasivo" class="form-container" style="display: none;">
-                <div class="upload-section">
-                    <h3>Opción 1: Cargar desde archivo</h3>
-                    <input type="file" id="archivoProductos" accept=".csv,.txt" class="file-input">
-                    <button type="button" id="btnCargarArchivo" class="btn-cargar">Cargar Archivo CSV/TXT</button>
-                    <p class="file-hint">Formato: nombre,cantidad,precio,categoría (una línea por producto)</p>
-                </div>
-                
-                <div class="divider">O</div>
-                
-                <div class="manual-section">
-                    <h3>Opción 2: Ingresar manualmente</h3>
-                    <p>Ingresa productos en formato: nombre,cantidad,precio,categoría (uno por línea)</p>
-                    <textarea id="productosMasivos" rows="10" placeholder="Ejemplo:&#10;Laptop,5,1200.50,Electrónica&#10;Mouse,20,15.99,Accesorios"></textarea>
-                    <button id="btnAgregarMasivo">Agregar Productos Masivos</button>
-                </div>
-            </div>
-        </section>
+        <!-- Mensaje de error / aviso -->
+        <p id="login-error" class="login-error" style="display:none;">Usuario o contraseña incorrectos</p>
 
-        <!-- Módulo 2: Visualizar Productos -->
-        <section id="visualizar" class="tab-content">
-            <h2>Visualizar Productos</h2>
-            <div class="search-bar">
-                <input type="text" id="buscar" placeholder="Buscar productos...">
-            </div>
-            <div id="listaProductos" class="productos-grid"></div>
-        </section>
-
-        <!-- Módulo 3: Seleccionar Productos -->
-        <section id="seleccionar" class="tab-content">
-            <h2>Seleccionar Productos</h2>
-            <div id="productosSeleccion" class="productos-seleccion"></div>
-            <div class="seleccion-acciones">
-                <button id="btnVenderProductos" class="btn-vender">💰 Vender Productos</button>
-                <button id="btnLimpiarSeleccion">🗑️ Limpiar Selección</button>
-            </div>
-            <div id="resumenSeleccion"></div>
-        </section>
-
-        <!-- Módulo 4: Gestión de Usuarios (Solo Admin) -->
-        <section id="usuarios" class="tab-content">
-            <h2>Gestión de Usuarios</h2>
-            
-            <div class="usuarios-header">
-                <button id="btnNuevoUsuario" class="btn-nuevo-usuario">➕ Nuevo Usuario</button>
-            </div>
-
-            <div id="listaUsuarios" class="usuarios-grid"></div>
-        </section>
+        <!-- Información adicional -->
+        <p class="login-register">¿No tienes cuenta? <a href="#">Regístrate aquí</a></p>
     </div>
 
-    <!-- Notificaciones -->
-    <div id="notificacion" class="notificacion">
-        <span class="notificacion-icono"></span>
-        <span class="notificacion-mensaje"></span>
-    </div>
+</div>
 
-    <!-- Modal para editar producto -->
-    <div id="modalEditar" class="modal">
-        <div class="modal-content">
-            <h2>Editar Producto</h2>
-            <form id="formEditar">
-                <input type="hidden" id="editarId">
-                <input type="text" id="editarNombre" placeholder="Nombre del producto" required>
-                <input type="number" id="editarCantidad" placeholder="Cantidad" required min="1">
-                <input type="number" id="editarPrecio" placeholder="Precio" required min="0" step="0.01">
-                <input type="text" id="editarCategoria" placeholder="Categoría">
-                <div class="modal-acciones">
-                    <button type="submit" class="btn-guardar">Guardar Cambios</button>
-                    <button type="button" class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
-                </div>
-            </form>
+<!-- Sistema principal -->
+<div class="container" id="mainSystem" style="display: none;">
+    <header>
+        <h1>InventoryPro</h1>
+        <div class="user-info">
+            <span id="nombreUsuario" class="user-name"></span>
+            <span id="rolUsuario" class="user-role"></span>
+            <button id="btnCerrarSesion" class="btn-logout">Cerrar Sesión</button>
         </div>
-    </div>
+    </header>
 
-    <!-- Modal para seleccionar formato de exportación -->
-    <div id="modalExportar" class="modal">
-        <div class="modal-content modal-exportar">
-            <h2>¿Cómo deseas exportar la factura?</h2>
-            <p class="modal-subtitle">Selecciona el formato de exportación para la venta</p>
-            <div class="export-buttons">
-                <button id="btnConfirmarExcel" class="btn-export-option btn-excel">
-                    <span class="icon">📊</span>
-                    <span class="text">Exportar a CSV</span>
-                    <span class="desc">Archivo .csv simple</span>
-                </button>
-                <button id="btnConfirmarPDF" class="btn-export-option btn-pdf">
-                    <span class="icon">📄</span>
-                    <span class="text">Exportar a PDF</span>
-                    <span class="desc">Documento imprimible</span>
-                </button>
-            </div>
-            <button class="btn-cancelar-modal" onclick="cerrarModalExportar()">Cancelar</button>
-        </div>
-    </div>
+    <nav class="tabs">
+        <button class="tab-btn active" data-tab="ingresar">Ingresar Productos</button>
+        <button class="tab-btn" data-tab="visualizar">Visualizar Productos</button>
+        <button class="tab-btn" data-tab="seleccionar">Seleccionar Productos</button>
+        <button class="tab-btn" id="tabUsuarios" data-tab="usuarios" style="display: none;">Gestión de Usuarios</button>
+    </nav>
 
-    <!-- Modal para crear/editar usuario -->
-    <div id="modalUsuario" class="modal">
-        <div class="modal-content">
-            <h2 id="tituloModalUsuario">Nuevo Usuario</h2>
-            <form id="formUsuario">
-                <input type="hidden" id="usuarioId">
-                <input type="text" id="usuarioNombre" placeholder="Nombre completo" required>
-                <input type="text" id="usuarioUsername" placeholder="Nombre de usuario" required>
-                <input type="password" id="usuarioPassword" placeholder="Contraseña" required>
-                <select id="usuarioRol" required>
-                    <option value="">Seleccionar rol</option>
-                    <option value="admin">Administrador</option>
-                    <option value="usuario">Usuario</option>
-                </select>
-                <div class="modal-acciones">
-                    <button type="submit" class="btn-guardar">Guardar Usuario</button>
-                    <button type="button" class="btn-cancelar" onclick="cerrarModalUsuario()">Cancelar</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <section id="ingresar" class="tab-content active"></section>
+    <section id="visualizar" class="tab-content"></section>
+    <section id="seleccionar" class="tab-content"></section>
+    <section id="usuarios" class="tab-content"></section>
+</div>
 
-    <script src="script.js"></script>
+<!-- Modals -->
+<div id="modalEditar" class="modal"></div>
+<div id="modalExportar" class="modal"></div>
+<div id="modalUsuario" class="modal"></div>
 
-    <!-- Script del carrusel -->
-    <script>
-        let slideActual = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.dot');
-        let intervalo = null;
+<!-- Notificaciones -->
+<div id="notificacion" class="notificacion"></div>
 
-        function mostrarSlide(index) {
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            slideActual = (index + slides.length) % slides.length;
-            slides[slideActual].classList.add('active');
-            dots[slideActual].classList.add('active');
-        }
+<!-- Scripts propios -->
+<script src="../JS/carrusel.js" defer></script>
+<script src="../JS/login.js" defer></script>
+<script src="../JS/productos.js" defer></script>
+<script src="../JS/usuarios.js" defer></script>
 
-        function moverCarrusel(direccion) {
-            mostrarSlide(slideActual + direccion);
-            reiniciarIntervalo();
-        }
+<!-- Script Carrusel inline inicial -->
+<script defer>
+    let slideActual = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    let intervalo = setInterval(() => mostrarSlide(slideActual + 1), 4000);
 
-        function irASlide(index) {
-            mostrarSlide(index);
-            reiniciarIntervalo();
-        }
+    function mostrarSlide(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        slideActual = (index + slides.length) % slides.length;
+        slides[slideActual].classList.add('active');
+        dots[slideActual].classList.add('active');
+    }
 
-        function reiniciarIntervalo() {
-            clearInterval(intervalo);
-            intervalo = setInterval(() => mostrarSlide(slideActual + 1), 4000);
-        }
+    function moverCarrusel(direccion) {
+        mostrarSlide(slideActual + direccion);
+        reiniciarIntervalo();
+    }
 
+    function irASlide(index) {
+        mostrarSlide(index);
+        reiniciarIntervalo();
+    }
+
+    function reiniciarIntervalo() {
+        clearInterval(intervalo);
         intervalo = setInterval(() => mostrarSlide(slideActual + 1), 4000);
-    </script>
+    }
+</script>
+
+<script>
+    const loginTitle = document.getElementById('login-title');
+    const ahora = new Date();
+    const hora = ahora.getHours(); // devuelve 0-23 basado en la hora del navegador
+    let saludo = "¡Bienvenido de nuevo!";
+
+    if (hora >= 5 && hora < 12) saludo = "¡Buenos días!";
+    else if (hora >= 12 && hora < 18) saludo = "¡Buenas tardes!";
+    else saludo = "¡Buenas noches!";
+
+    loginTitle.textContent = saludo;
+</script>
+
 </body>
 </html>
