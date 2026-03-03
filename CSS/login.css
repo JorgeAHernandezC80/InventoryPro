@@ -85,7 +85,7 @@ html, body {
     margin: 0 0 0.5rem 0;
     text-shadow: 0 1px 6px rgba(0,0,0,0.6);
     line-height: 1;
-    letter-spacing: 0.04em; /* ajusta el valor según prefieras */
+    letter-spacing: 0.04em; 
 }
 
 .carousel-caption p {
@@ -95,7 +95,7 @@ html, body {
     max-width: auto;
     opacity: 1;
     margin: 0;
-    letter-spacing: 0.04em; /* ajusta el valor según prefieras */
+    letter-spacing: 0.04em;
 }
 
 .carousel-icon {
