@@ -11,15 +11,16 @@ html, body {
     overflow-x: hidden;
 }
 
-/* CONTENEDOR PRINCIPAL */
+
+/* Contenedor principal de la pantalla de login */
 .login-screen {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    gap: 30px;
+    justify-content: center; 
+    align-items: center;    
+    height: 100vh;       
+    background-color: #f0f2f5; 
     padding: 20px;
-    margin: 0 auto;
+    gap: 20px;
 }
 
 /* CARRUSEL */
@@ -121,12 +122,10 @@ html, body {
     pointer-events: none;
 }
 
-/* FORMULARIO LOGIN */
+/* Contenedor del formulario (tu código existente) */
 .login-container {
-    flex: 1.5;
-    max-width: 450px;
+    flex: 0 1 450px;  /* Se adapta hasta 450px */
     width: 100%;
-    height: auto;
     padding: 30px;
     background-color: #fff;
     border-radius: 12px;
@@ -174,6 +173,28 @@ html, body {
     text-align: center;
     font-size: clamp(16px, 1vw, 16px);
     margin: 10px;
+}
+
+.login-error {
+    max-width: 100%;        /* No sobrepasa el contenedor */
+    box-sizing: border-box;  /* Padding incluido en ancho */
+    padding: 12px;
+    margin: 10px auto;       /* Centrado horizontal */
+    font-size: clamp(14px, 1vw, 16px);
+    text-align: center;
+    border-radius: 6px;
+    background-color: #ffe6e6;
+    color: #b00020;
+    width: 100%;
+    padding: 12px;
+    margin: 5px;
+    font-size: clamp(20px, 1.2vw, 20px);
+    border-radius: 10px;   
+}
+
+.login-error.show {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* RESPONSIVE */
