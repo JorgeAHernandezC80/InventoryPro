@@ -1,12 +1,16 @@
-/* ==========================
-   DASHBOARD PRINCIPAL
-   ========================== */
+/* VARIABLES Y RESET */
+:root {
+    --primary-color: #4a90e2;
+    --text-color: #333;
+}
+
+/* DASHBOARD PRINCIPAL */
 .dashboard {
     max-width: 950px;
     margin: 40px auto;
     padding: 40px 35px;
-    background: rgba(255, 255, 255, 0.85);  /* fondo semi-transparente */
-    backdrop-filter: blur(12px);             /* efecto glass */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
     border-radius: 25px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.2);
     display: flex;
@@ -25,27 +29,21 @@
     font-weight: 700;
 }
 
-/* ==========================
-   INFORMACIÓN DEL ADMIN PROFESIONAL
-   ========================== */
+/* ADMIN INFO */
 .admin-info {
     display: flex;
     align-items: center;
     gap: 30px;
     padding: 30px 25px;
-    background: rgba(255, 255, 255, 0.15);   /* fondo semi-transparente */
-    backdrop-filter: blur(12px);              /* efecto glass */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
     border-radius: 25px;
-    
-    /* Neumorphism suave */
     box-shadow:
         8px 8px 20px rgba(0,0,0,0.2),
         -8px -8px 20px rgba(255,255,255,0.1);
-
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* Hover con elevación y sombra más marcada */
 .admin-info:hover {
     transform: translateY(-6px);
     box-shadow:
@@ -53,7 +51,7 @@
         -12px -12px 28px rgba(255,255,255,0.15);
 }
 
-/* Avatar del administrador */
+/* Avatar */
 .admin-info .user-icon {
     width: 160px;
     height: 160px;
@@ -68,7 +66,7 @@
     transform: scale(1.05);
 }
 
-/* Detalles del admin */
+/* Detalles */
 .admin-details h3 {
     margin: 0;
     font-size: 1.8rem;
@@ -83,6 +81,7 @@
     line-height: 1.4;
 }
 
+/* Acciones del usuario */
 .user-actions {
     display: flex;
     gap: 35px;
@@ -90,7 +89,7 @@
     flex-wrap: wrap;
 }
 
-/* Botones circulares profesionales */
+/* Botones circulares */
 .action-btn {
     display: flex;
     flex-direction: column;
@@ -110,7 +109,6 @@
     position: relative;
 }
 
-/* Label debajo del icono */
 .action-btn span {
     font-size: 1rem;
     font-weight: 600;
@@ -119,25 +117,22 @@
     text-align: center;
 }
 
-/* Hover */
 .action-btn:hover {
     transform: translateY(-10px) scale(1.1);
     box-shadow: 0 20px 50px rgba(0,0,0,0.35);
 }
 
-/* Colores por tipo */
+/* Colores específicos */
 #btnCrear { background: linear-gradient(135deg, #28a745, #218838); }
 #btnActualizar { background: linear-gradient(135deg, #ffc107, #e0a800); }
 #btnEliminar { background: linear-gradient(135deg, #dc3545, #b02a37); }
 
-/* Hover específico */
 #btnCrear:hover { background: linear-gradient(135deg, #218838, #1c5930); }
 #btnActualizar:hover { background: linear-gradient(135deg, #e0a800, #b08c00); }
 #btnEliminar:hover { background: linear-gradient(135deg, #b02a37, #7a1820); }
 
-/* ==========================
-   RESPONSIVE
-   ========================== */
+
+/* RESPONSIVE */
 @media (max-width: 900px) {
     .admin-info {
         flex-direction: column;
@@ -147,204 +142,26 @@
         padding: 25px 20px;
     }
 
-    .admin-info .user-icon {
-        width: 140px;
-        height: 140px;
-    }
-
-    .admin-details h3 {
-        font-size: 1.7rem;
-    }
-
-    .admin-details p {
-        font-size: 1.1rem;
-    }
-
-    .action-btn {
-        width: 130px;
-        height: 130px;
-        font-size: 2rem;
-    }
-
-    .action-btn span {
-        font-size: 1rem;
-    }
+    .admin-info .user-icon { width: 140px; height: 140px; }
+    .admin-details h3 { font-size: 1.7rem; }
 }
 
 @media (max-width: 600px) {
-    .admin-info .user-icon {
-        width: 120px;
-        height: 120px;
-    }
+    .admin-info .user-icon { width: 120px; height: 120px; }
+    .admin-details h3 { font-size: 1.5rem; }
+    .admin-details p { font-size: 1rem; }
 
-    .admin-details h3 {
-        font-size: 1.5rem;
-    }
+    .action-btn { width: 110px; height: 110px; font-size: 1.8rem; }
+    .action-btn span { font-size: 0.9rem; }
 
-    .admin-details p {
-        font-size: 1rem;
-    }
-
-    .action-btn {
-        width: 110px;
-        height: 110px;
-        font-size: 1.8rem;
-    }
-
-    .action-btn span {
-        font-size: 0.9rem;
-    }
-}
-
- /* ==========================
-    MODALES PROFESIONALES
-    ========================== */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5); /* overlay oscuro semi-transparente */
-    display: none; /* oculto por defecto */
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-}
-
-.modal.active {
-    display: flex; /* visible al activar */
-}
-
-/* Contenedor del contenido del modal */
-.modal-content {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    box-shadow:
-        8px 8px 25px rgba(0,0,0,0.25),
-        -8px -8px 25px rgba(255,255,255,0.1);
-    padding: 30px 25px;
-    width: 450px;
-    max-width: 90%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    animation: fadeInModal 0.3s ease forwards;
-}
-
-/* Animación de aparición */
-@keyframes fadeInModal {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Botón de cierre */
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--text-color);
-    transition: color 0.2s ease;
-}
-
-.close-btn:hover {
-    color: var(--primary-color);
-}
-
-/* Título del modal */
-.modal-content h3 {
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-align: center;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 8px;
-}
-
-/* Formulario dentro del modal */
-.modal-content form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Inputs y selects */
-.modal-content input,
-.modal-content select {
-    padding: 10px 12px;
-    border-radius: 12px;
-    border: 1px solid rgba(0,0,0,0.2);
-    font-size: 1rem;
-    transition: border 0.2s ease, box-shadow 0.2s ease;
-}
-
-.modal-content input:focus,
-.modal-content select:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 8px rgba(74,144,226,0.4);
-}
-
-/* Botones dentro del modal */
-.modal-content .btn-submit,
-.modal-content .btn-cancel {
-    padding: 12px 20px;
-    border-radius: 12px;
-    border: none;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.modal-content .btn-submit {
-    background: linear-gradient(135deg, #28a745, #218838);
-    color: #fff;
-}
-
-.modal-content .btn-submit:hover {
-    background: linear-gradient(135deg, #218838, #1c5930);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-}
-
-.modal-content .btn-cancel {
-    background: #dc3545;
-    color: #fff;
-}
-
-.modal-content .btn-cancel:hover {
-    background: #b02a37;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-}
-
-/* Responsive */
-@media (max-width: 600px) {
     .modal-content {
         padding: 20px 15px;
         width: 90%;
     }
 
-    .modal-content h3 {
-        font-size: 1.5rem;
-    }
-
+    .modal-content h3 { font-size: 1.5rem; }
     .modal-content input,
-    .modal-content select {
-        font-size: 0.95rem;
-    }
-
+    .modal-content select { font-size: 0.95rem; }
     .modal-content .btn-submit,
-    .modal-content .btn-cancel {
-        font-size: 0.9rem;
-    }
+    .modal-content .btn-cancel { font-size: 0.9rem; }
 }
