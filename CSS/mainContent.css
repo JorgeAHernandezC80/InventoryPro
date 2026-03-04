@@ -115,7 +115,7 @@
 
 /* Filas y celdas */
 .tabla-criticos td {
-    padding: 12px 10px;
+    padding: 12px;
     font-size: 1.2rem;
     color: #333;
     border-bottom: 2px solid #d1d1d1;

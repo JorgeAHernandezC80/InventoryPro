@@ -1,20 +1,20 @@
-/* Reset y variables */
+/* ---------------- RESET Y VARIABLES ---------------- */
 :root {
     --primary-color: #4a90e2;
     --secondary-color: #f5f5f5;
-    --card-bg: #fff;
+    --card-bg: #ffffff;
     --text-color: #333;
+    --danger-color: #e74c3c;
 }
 
-/* App Layout */
+/* ---------------- APP LAYOUT ---------------- */
 .app-layout {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* HEADER */
-/* Topbar */
+/* ---------------- HEADER ---------------- */
 .topbar {
     display: flex;
     justify-content: space-between;
@@ -32,29 +32,22 @@
 .topbar-left .logo {
     font-size: 2rem;
     font-weight: 700;
-    color: #4a90e2;
+    color: var(--primary-color);
 }
 
 /* Búsqueda */
 .topbar-center .search-input {
-    width: 700px;          
-    padding: 8px 12px;     
+    width: 700px;
+    padding: 8px 12px;
     border-radius: 8px;
     border: 1px solid #ccc;
-    font-size: 1.2rem;
-    text-align: left;      
-    transition: all 0.3s;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
 }
 
 .search-input:focus {
     outline: none;
-    border-color: #4a90e2;
-    box-shadow: 0 0 8px rgba(74,144,226,0.3);
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #4a90e2;
+    border-color: var(--primary-color);
     box-shadow: 0 0 8px rgba(74,144,226,0.3);
 }
 
@@ -62,81 +55,65 @@
 .topbar-right {
     display: flex;
     align-items: center;
-    gap: 20px; 
+    gap: 20px;
 }
 
-/* Botón de notificaciones */
+/* ---------------- NOTIFICACIONES ---------------- */
 .notification-btn {
     position: relative;
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.2rem;      
+    font-size: 1.4rem;
     padding: 6px;
     border-radius: 8px;
-    transition: background 0.2s, transform 0.2s;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .notification-btn:hover {
-    background-color: rgba(74, 144, 226, 0.1);
+    background-color: rgba(74,144,226,0.1);
     transform: translateY(-2px);
 }
 
-/* Badge de notificaciones */
 .notification-btn .badge {
     position: absolute;
     top: -6px;
     right: -8px;
-    background-color: #e74c3c;
+    background-color: var(--danger-color);
     color: #fff;
-    font-size: 0.85rem;      
+    font-size: 0.75rem;
     padding: 3px 6px;
     border-radius: 50%;
     font-weight: 700;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* Icono de campana */
-.icon-bell {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-/* Icono de la campana más grande */
-.notification-btn .icon-bell {
-    font-size: 1.5rem;  
-    line-height: 1;   
-}
-
-/* Menú de usuario */
+/* ---------------- MENÚ DE USUARIO ---------------- */
 .user-menu {
     position: relative;
-    display: inline-block;
 }
 
 /* Botón del usuario */
 .user-info {
     display: inline-flex;
     align-items: center;
-    gap: 8px;                  
+    gap: 8px;
     padding: 6px 12px;
     border-radius: 10px;
     background-color: #fff;
     border: 1px solid #d1d1d1;
     cursor: pointer;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    font-size: 1.2rem;           
+    font-size: 1rem;
     font-weight: 600;
-    color: #333;
-    transition: background 0.2s, box-shadow 0.2s;
+    color: var(--text-color);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .user-info:hover {
-    background-color: rgba(74, 144, 226, 0.1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background-color: rgba(74,144,226,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* Avatar del usuario */
+/* Avatar */
 .user-icon {
     width: 35px;
     height: 35px;
@@ -144,63 +121,73 @@
     object-fit: cover;
 }
 
-/* Nombre dentro del botón */
-#nombreUsuario {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-/* Dropdown del usuario */
-.user-menu[aria-expanded="true"] .user-dropdown {
-    display: block;
-}
-
 .user-dropdown {
     position: absolute;
-    top: 100%;
+    top: 120%;
     right: 0;
-    margin-top: 5px;
-    min-width: 160px;
-    background: #fff;
-    border: 1px solid #d1d1d1;
-    border-radius: 8px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-    list-style: none;
-    padding: 5px 0;
+    width: 200px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    /* box-shadow corregido: offsetX offsetY blurRadius spreadRadius color */
+    box-shadow: 0 8px 20px 5px rgba(0,0,0,0.25);
+    padding: 8px;
     display: none;
     z-index: 1000;
+    flex-direction: column;
+    animation: fadeIn 0.5s ease;
 }
 
-.user-dropdown li a {
-    display: block;
-    padding: 10px 15px;
-    color: #333;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: background 0.2s;
+/* Mostrar dropdown activo */
+.user-dropdown.active {
+    display: flex;
 }
 
-.user-dropdown li a:hover {
-    background-color: rgba(74,144,226,0.1);
+/* Animación */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-
-
-/* Cerrar sesión */
-.logout-btn {
-    padding: 0 15px;        
-    height: 35px;         
+/* Items flex: icon y label */
+.user-dropdown a,
+.user-dropdown button {
+    display: flex;
+    align-items: center;       /* icon verticalmente centrado */
+    justify-content: flex-start; /* label alineado a la izquierda */
+    gap: 10px;                 /* espacio entre icon y label */
+    padding: 10px 16px;
+    background: none;
     border: none;
-    border-radius: 8px;
-    background-color: #4a90e2;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 500;
     cursor: pointer;
-    transition: background 0.3s;
-}
-.logout-btn:hover {
-    background-color: #357abd;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background 0.2s ease;
 }
 
+/* Hover visible */
+.user-dropdown a:hover,
+.user-dropdown button:hover {
+    background-color: rgba(0, 0, 0, 0.08); /* gris claro semitransparente para resaltar */
+    border-radius: 10px;
+}
+
+/* Botón cerrar sesión destacado */
+.logout-btn {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 1200px) {
+    .topbar-center .search-input { width: 400px; }
+}
+
+@media (max-width: 900px) {
+    .topbar-center .search-input { width: 250px; }
+}
+
+@media (max-width: 700px) {
+    .topbar-center { display: none; }
+}
