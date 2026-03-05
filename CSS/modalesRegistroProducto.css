@@ -1,7 +1,9 @@
-/* MODAL CREAR USUARIO */
+/* ===============================
+   MODALES PRODUCTO (CREAR, EDITAR, BUSCAR, VER)
+   =============================== */
 
 /* Contenedor del modal */
-#modalCrear {
+.product-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -14,39 +16,42 @@
     z-index: 2000;
 }
 
-#modalCrear.active {
+.product-modal.active {
     display: flex;
 }
 
-/* Contenido del modal en dos columnas */
-#modalCrear .modal-content {
+/* Contenido del modal */
+.product-modal-content {
     width: 800px;
     max-width: 95%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.95);
+    gap: 15px;
+    padding: 25px;
+    background: rgba(245, 249, 252, 0.95);
     backdrop-filter: blur(12px);
     border-radius: 25px;
     box-shadow:
         8px 8px 25px rgba(0,0,0,0.25),
         -8px -8px 25px rgba(255,255,255,0.1);
     font-family: 'Segoe UI', Tahoma, sans-serif;
+    animation: fadeInModal 0.3s ease forwards;
+    position: relative;
 }
 
 /* Título del modal */
-#modalCrear .modal-content h3 {
+.product-modal-content h3 {
     grid-column: 1 / -1;
     font-size: 2rem;
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
+    color: #4A90E2;
+    border-bottom: 2px solid #4A90E2;
     padding-bottom: 10px;
     text-align: center;
+    margin-bottom: 15px;
 }
 
 /* Botón cerrar */
-#modalCrear .close-btn {
+.product-modal-content .close-btn {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -58,33 +63,34 @@
     transition: color 0.2s ease;
 }
 
-#modalCrear .close-btn:hover {
+.product-modal-content .close-btn:hover {
     color: #4A90E2;
 }
 
-/* Formulario en dos columnas */
-#modalCrear form {
-    display: contents; 
+/* Formulario dentro del modal */
+.product-modal form {
+    display: contents;
 }
 
 /* Cada fila de formulario */
-#modalCrear .form-row {
+.product-modal .form-row {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-/* Etiquetas */
-#modalCrear .form-row label {
+/* Etiquetas de formulario */
+.product-modal .form-row label {
     font-weight: 600;
     font-size: 0.95rem;
     margin-bottom: 4px;
+    color: #333;
 }
 
 /* Inputs y selects con neumorphism */
-#modalCrear input,
-#modalCrear select {
-    padding: 15px;
+.product-modal input,
+.product-modal select {
+    padding: 12px 15px;
     border-radius: 15px;
     border: 1px solid rgba(0,0,0,0.15);
     background: rgba(255,255,255,0.9);
@@ -95,32 +101,35 @@
 }
 
 /* Focus en inputs y selects */
-#modalCrear input:focus,
-#modalCrear select:focus {
+.product-modal input:focus,
+.product-modal select:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: #4A90E2;
     box-shadow: 0 0 12px rgba(74,144,226,0.4),
                 inset 2px 2px 6px rgba(0,0,0,0.1);
 }
 
 /* Placeholder elegante */
-#modalCrear input::placeholder {
+.product-modal input::placeholder {
     color: rgba(0,0,0,0.4);
     font-style: italic;
 }
 
-/* Botones */
-#modalCrear .form-buttons {
-    grid-column: 1 / -1;
+/* Contenedor de botones */
+.product-modal .form-buttons {
+    grid-column: 1 / -1;          /* ocupa toda la fila del grid */
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end;    /* botones a la derecha */
+    align-items: center;          /* alineados verticalmente */
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 10px;             /* espacio desde las filas anteriores */
+    margin-bottom: 0;             /* elimina margen extra inferior */
 }
 
-/* Botones comunes */
-#modalCrear .form-buttons button {
-    padding: 14px 26px;
+/* Botones uniformes - mismo alto y ancho */
+.product-modal .form-buttons button {
+    width: 140px;              /* ancho fijo */
+    height: 48px;              /* alto fijo */
     border-radius: 15px;
     border: none;
     font-size: 1rem;
@@ -130,33 +139,48 @@
     letter-spacing: 0.5px;
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     box-shadow: 0 6px 15px rgba(0,0,0,0.2), inset 0 -2px 0 rgba(0,0,0,0.1);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Botón crear */
-#modalCrear .btn-submit {
+/* Botón crear / guardar */
+.product-modal .btn-submit {
     background: linear-gradient(135deg, #28a745, #218838);
     color: #fff;
 }
 
-#modalCrear .btn-submit:hover {
+.product-modal .btn-submit:hover {
     background: linear-gradient(135deg, #218838, #1c5930);
     transform: translateY(-2px) scale(1.03);
     box-shadow: 0 10px 28px rgba(0,0,0,0.35);
 }
 
+/* Botón actualizar / editar */
+.product-modal .btn-update {
+    background: linear-gradient(135deg, #2196F3, #0b66c2);
+    color: #fff;
+}
+
+.product-modal .btn-update:hover {
+    background: linear-gradient(135deg, #0b66c2, #064785);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
+
 /* Botón cancelar */
-#modalCrear .btn-cancel {
+.product-modal .btn-cancel {
     background: linear-gradient(135deg, #dc3545, #b02a37);
     color: #fff;
 }
 
-#modalCrear .btn-cancel:hover {
+.product-modal .btn-cancel:hover {
     background: linear-gradient(135deg, #b02a37, #7a1820);
     transform: translateY(-2px) scale(1.03);
     box-shadow: 0 10px 28px rgba(0,0,0,0.35);
 }
 
-/* Animación modal */
+/* Animación de aparición del modal */
 @keyframes fadeInModal {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -164,8 +188,9 @@
 
 /* Responsive */
 @media (max-width: 900px) {
-    #modalCrear .modal-content {
+    .product-modal-content {
         width: 95%;
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
+        padding: 20px;
     }
 }

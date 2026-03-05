@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Productos | InventoryPro</title>
+
+    <!-- CSS modular -->
+    <link rel="stylesheet" href="../CSS/layout.css">
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="stylesheet" href="../CSS/gestionUsuarios.css">
+    <link rel="stylesheet" href="../CSS/">
+
+
+
+    <!-- CSS PRODUCTOS (aislado) -->
+    <link rel="stylesheet" href="../CSS/gestionProductos.css">
+    <link rel="stylesheet" href="../CSS/modalesRegistroProducto.css">
+    
+</head>
+<body>
+        <!-- HEADER SUPERIOR -->
+        <header class="topbar">
+            <!-- Logo -->
+            <div class="topbar-left">
+                <div class="logo">InventoryPro</div>
+            </div>
+
+            <!-- Barra de búsqueda -->
+            <div class="topbar-center">
+                <input type="search" placeholder="Buscar productos..." class="search-input">
+            </div>
+
+            <!-- Notificaciones y usuario -->
+            <div class="topbar-right">
+                <!-- Icono de notificaciones -->
+                <button class="notification-btn" title="Notificaciones">
+                    <span class="icon-bell">🔔</span>
+                    <span class="badge">3</span>
+                </button>
+
+                <!-- Usuario en el header -->
+                    <!-- Usuario en el header -->
+                <nav class="user-menu" aria-label="Menú de usuario">
+                    <button class="user-info" id="userInfo" aria-haspopup="true" aria-expanded="false">
+                        <img src="../IMG/woman.png" alt="Avatar del usuario" class="user-icon">
+                        <span id="nombreUsuario">Laura Olmos</span>
+                    </button>
+
+                    <!-- Dropdown -->
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="../HTML/gestionUsuarios.html" class="dropdown-item">👤 Mi Perfil</a>
+                        <a href="#" class="dropdown-item">⚙ Configuraciones</a>
+                        <button id="btnCerrarSesion" class="logout-btn">🚪 Cerrar Sesión</button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li id="navInicio"><a href="../HTML/home.html">Inicio</a></li>
+                        <li id="navRegistro" class="active"><a href="../HTML/registroProductos.html">Registro de Productos</a></li>
+                        <li id="navEstadisticas"><a href="estadisticas.html">Estadísticas</a></li>
+                        <li id="navReportes"><a href="reportes.html">Reportes</a></li>
+                        <li id="navNotificaciones"><a href="notificaciones.html">Notificaciones</a></li>
+                        <!--<li id="navMapa"><a href="mapa.html">Mapa</a></li> -->
+                        <li id="navConfiguraciones"><a href="configuraciones.html">Configuraciones</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+        <!-- DASHBOARD PRODUCTOS -->
+            <section class="dashboard product-dashboard">
+
+                <h2 class="product-title">Gestión de Productos</h2>
+
+                <!-- ===== ACCIONES ===== -->
+                <div class="product-actions" id="prod-actions">
+
+                    <!-- Crear Producto -->
+                    <button 
+                        class="product-btn product-btn-create" 
+                        id="prod-btn-create">
+                        ➕ Crear Producto
+                    </button>
+
+                    <!-- Editar Producto -->
+                    <button 
+                        class="product-btn product-btn-edit" 
+                        id="prod-btn-edit">
+                        ✏️ Editar Producto
+                    </button>
+
+                    <!-- Buscar Producto -->
+                    <button 
+                        class="product-btn product-btn-search" 
+                        id="prod-btn-search">
+                        🔍 Buscar Producto
+                    </button>
+
+                    <!-- Ver Producto -->
+                    <button 
+                        class="product-btn product-btn-view" 
+                        id="prod-btn-view">
+                        🔭 Ver Producto
+                    </button>
+
+                </div>
+
+                <!-- MÉTRICAS SEMÁFORO -->
+                <div class="product-metrics" id="prod-metrics">
+                    <div class="product-metric-card">
+                        <h3 id="semaforo-verde">0</h3>
+                        <p>Vencimiento seguro</p>
+                    </div>
+
+                    <div class="product-metric-card">
+                        <h3 id="semaforo-amarillo">0</h3>
+                        <p>Vencimiento cercano</p>
+                    </div>
+
+                    <div class="product-metric-card">
+                        <h3 id="semaforo-rojo">0</h3>
+                        <p>Vencido</p>
+                    </div>
+                </div>
+
+                <!-- TABLA -->
+                <div class="product-table-wrapper">
+
+                    <table class="product-table" id="prod-table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nombre del producto</th>
+                                <th>Fecha de elaboración</th>
+                                <th>Fecha de vencimiento</th>
+                                <th>Tipo</th>
+                                <th>Fecha de compra</th>
+                                <th>Nombre del proveedor</th>
+                                <th>Fecha de venta</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="prod-table-body">
+                            <tr><td colspan="9">&nbsp;</td></tr>
+                            <tr><td colspan="9">&nbsp;</td></tr>
+                            <tr><td colspan="9">&nbsp;</td></tr>
+                            <tr><td colspan="9">&nbsp;</td></tr>
+                            <tr><td colspan="9">&nbsp;</td></tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- MODAL CREAR PRODUCTO -->
+        <div id="prod-modal-create" class="product-modal">
+            <div class="product-modal-content">
+                <!-- Botón cerrar -->
+                <button class="close-btn" data-prod-modal="prod-modal-create">&times;</button>
+
+                <!-- Título -->
+                <h3>Crear Producto</h3>
+
+                <!-- Formulario -->
+                <form id="prod-form-create">
+                    <!-- Código -->
+                    <div class="form-row">
+                        <label for="prod-input-code">Código</label>
+                        <input type="text" id="prod-input-code" placeholder="Ingrese código" required>
+                    </div>
+
+                    <!-- Nombre del producto -->
+                    <div class="form-row">
+                        <label for="prod-input-name">Nombre del producto</label>
+                        <input type="text" id="prod-input-name" placeholder="Ingrese nombre" required>
+                    </div>
+
+                    <!-- Fecha de elaboración -->
+                    <div class="form-row">
+                        <label for="prod-input-fecha-elab">Fecha de elaboración</label>
+                        <input type="date" id="prod-input-fecha-elab" required>
+                    </div>
+
+                    <!-- Fecha de vencimiento -->
+                    <div class="form-row">
+                        <label for="prod-input-fecha-vence">Fecha de vencimiento</label>
+                        <input type="date" id="prod-input-fecha-vence" required>
+                    </div>
+
+                    <!-- Tipo -->
+                    <div class="form-row">
+                        <label for="prod-input-tipo">Tipo</label>
+                        <input type="text" id="prod-input-tipo" placeholder="Ingrese tipo de producto" required>
+                    </div>
+
+                    <!-- Fecha de compra -->
+                    <div class="form-row">
+                        <label for="prod-input-fecha-compra">Fecha de compra</label>
+                        <input type="date" id="prod-input-fecha-compra" required>
+                    </div>
+
+                    <!-- Nombre del proveedor -->
+                    <div class="form-row">
+                        <label for="prod-input-proveedor">Nombre del proveedor</label>
+                        <input type="text" id="prod-input-proveedor" placeholder="Ingrese nombre del proveedor" required>
+                    </div>
+
+                    <!-- Fecha de venta -->
+                    <div class="form-row">
+                        <label for="prod-input-fecha-venta">Fecha de venta</label>
+                        <input type="date" id="prod-input-fecha-venta">
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-submit">Crear</button>
+                        <button type="button" class="btn-cancel" data-prod-modal="prod-modal-create">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- MODAL EDITAR PRODUCTO -->
+        <div id="prod-modal-edit" class="product-modal">
+            <div class="product-modal-content">
+                <button class="close-btn" data-prod-modal="prod-modal-edit">&times;</button>
+                <h3>Editar Producto</h3>
+                <form id="prod-form-edit">
+
+                    <div class="form-row">
+                        <label for="prod-edit-code">Código</label>
+                        <input type="text" id="prod-edit-code" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="prod-edit-name">Nombre del producto</label>
+                        <input type="text" id="prod-edit-name" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="prod-edit-fecha-elab">Fecha de elaboración</label>
+                        <input type="date" id="prod-edit-fecha-elab" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="prod-edit-fecha-vence">Fecha de vencimiento</label>
+                        <input type="date" id="prod-edit-fecha-vence" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="prod-edit-tipo">Tipo</label>
+                        <input type="text" id="prod-edit-tipo" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="prod-edit-fecha-compra">Fecha de compra</label>
+                        <input type="date" id="prod-edit-fecha-compra" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="prod-edit-proveedor">Nombre del proveedor</label>
+                        <input type="text" id="prod-edit-proveedor" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="prod-edit-fecha-venta">Fecha de venta</label>
+                        <input type="date" id="prod-edit-fecha-venta">
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-submit">Actualizar</button>
+                        <button type="button" class="btn-cancel" data-prod-modal="prod-modal-edit">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- MODAL BUSCAR PRODUCTO -->
+        <div id="prod-modal-search" class="product-modal">
+            <div class="product-modal-content">
+                <button class="close-btn" data-prod-modal="prod-modal-search">&times;</button>
+                <h3>Buscar Producto</h3>
+
+                <form id="prod-form-search">
+
+                    <div class="form-row">
+                        <label for="prod-search-input">Código, Nombre o Proveedor</label>
+                        <input type="text" id="prod-search-input" placeholder="Ingrese criterio de búsqueda..." required>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-submit">Buscar 🔍</button>
+                        <button type="button" class="btn-cancel" data-prod-modal="prod-modal-search">Cancelar</button>
+                    </div>
+
+                </form>
+
+                <!-- Opcional: mostrar resultados directamente dentro del modal -->
+                <div id="prod-search-results" style="margin-top: 20px;">
+                    <!-- Aquí se mostrarán los productos encontrados -->
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL VER PRODUCTO -->
+        <div id="prod-modal-view" class="product-modal">
+            <div class="product-modal-content">
+                <button class="close-btn" data-prod-modal="prod-modal-view">&times;</button>
+                <h3>Ver Producto</h3>
+
+                <div class="form-row">
+                    <label>Código</label>
+                    <input type="text" id="view-prod-code" readonly>
+                </div>
+
+                <div class="form-row">
+                    <label>Nombre del producto</label>
+                    <input type="text" id="view-prod-name" readonly>
+                </div>
+
+                <div class="form-row">
+                    <label>Fecha de elaboración</label>
+                    <input type="date" id="view-prod-fecha-elab" readonly>
+                </div>
+
+                <div class="form-row">
+                    <label>Fecha de vencimiento</label>
+                    <input type="date" id="view-prod-fecha-vence" readonly>
+                </div>
+
+                <div class="form-row">
+                    <label>Tipo</label>
+                    <input type="text" id="view-prod-tipo" readonly>
+                </div>
+
+                <div class="form-row">
+                    <label>Fecha de compra</label>
+                    <input type="date" id="view-prod-fecha-compra" readonly>
+                </div>
+
+                <div class="form-row">
+                    <label>Nombre del proveedor</label>
+                    <input type="text" id="view-prod-proveedor" readonly>
+                </div>
+
+                <div class="form-row">
+                    <label>Fecha de venta</label>
+                    <input type="date" id="view-prod-fecha-venta" readonly>
+                </div>
+            </div>
+        </div>
+        <!-- SCRIPTS -->
+        <script src="../JS/productos.js" defer></script>
+        <script src="../JS/usuarios.js" defer></script>
+        <script src="../JS/modalesUsuarios.js" defer></script>
+        <script src="../JS/modalProducto.js" defer></script>
+</body>
+</html>

@@ -2,15 +2,15 @@
 .main-container {
     display: flex;
     gap: 20px;          
-    padding: 5px 10px;
-    margin: 5px;
+    padding: 15px;
+    margin: 10px;
     align-items: flex-start;
 }
 
 /* SIDEBAR */
 .sidebar {
     width: 280px;
-    background-color: #F7F5F2;
+    background-color: #f5f9fc;
     border-radius: 10px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     padding: 20px 15px;
