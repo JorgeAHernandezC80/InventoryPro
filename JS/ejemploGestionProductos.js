@@ -24,9 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const btnEditarGeneral = document.getElementById("prod-btn-edit");
 
-    // =========================
     // Funciones generales
-    // =========================
 
     // Función para abrir modal
     const openModal = (modal) => modal.classList.add("active");
@@ -68,10 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("prod-inactive-count").textContent = productos.filter(p => p.estado === "inactivo").length;
     };
 
-    // =========================
-    // Editar producto
-    // =========================
-
+    // Editar producto    
     let productoSeleccionadoIndex = null;
 
     const actualizarEventosEditar = () => {
@@ -119,16 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
         formEditar.reset();
     });
 
-    // =========================
     // Control de rol para botón general de editar
-    // =========================
     if (usuarioActual.rol !== "admin") {
         if (btnEditarGeneral) btnEditarGeneral.style.display = "none";
     }
 
-    // =========================
     // Inicialización
-    // =========================
     renderTabla();
     actualizarMetricas();
 });

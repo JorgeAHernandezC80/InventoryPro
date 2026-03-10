@@ -1,6 +1,4 @@
-/* ==========================
-   RESET GLOBAL PARA LOGIN
-   ========================== */
+/* RESET GLOBAL PARA LOGIN */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,9 +12,7 @@ html, body {
     overflow-x: hidden;
 }
 
-/* ==========================
-   CONTENEDOR PRINCIPAL LOGIN
-   ========================== */
+/* CONTENEDOR PRINCIPAL LOGIN */
 .login-screen {
     display: flex;
     justify-content: center; 
@@ -206,9 +202,7 @@ html, body {
     color: #b00020;
 }
 
-/* ==========================
-   RESPONSIVE
-   ========================== */
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .login-screen {
         flex-direction: column;

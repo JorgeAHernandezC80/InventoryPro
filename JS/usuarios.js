@@ -3,7 +3,7 @@
 // Usuario actual (ejemplo)
 const usuarioActual = {
     nombre: "Laura Olmos",
-    avatar: "../IMG/woman.png" // ruta al avatar predeterminado o personalizado
+    avatar: "../IMG/woman.png" 
 };
 
 // Función principal
@@ -23,7 +23,7 @@ function actualizarHeaderUsuario() {
 
     // Mostrar / ocultar dropdown al hacer clic en el usuario
     userInfoBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Evita que el clic se propague al document
+        e.stopPropagation(); 
         dropdown.classList.toggle('active');
         const isActive = dropdown.classList.contains('active');
         userInfoBtn.setAttribute('aria-expanded', String(isActive));
@@ -42,7 +42,7 @@ function actualizarHeaderUsuario() {
     if (btnCerrarSesion) {
         btnCerrarSesion.addEventListener('click', () => {
             // Limpiar sesión o redirigir al login
-            window.location.href = "../HTML/login.html"; // Ajusta según la ruta real
+            window.location.href = "../HTML/login.html"; 
         });
     }
 
@@ -52,7 +52,7 @@ function actualizarHeaderUsuario() {
         perfilLink.addEventListener('click', (e) => {
             e.preventDefault();
             // Redirigir a perfil
-            window.location.href = "../HTML/perfil.html"; // Ajusta según tu ruta real
+            window.location.href = "../HTML/perfil.html"; 
         });
     }
 
@@ -62,7 +62,7 @@ function actualizarHeaderUsuario() {
         configLink.addEventListener('click', (e) => {
             e.preventDefault();
             // Redirigir a configuraciones
-            window.location.href = "../HTML/configuraciones.html"; // Ajusta según tu ruta real
+            window.location.href = "../HTML/configuraciones.html"; 
         });
     }
 }
